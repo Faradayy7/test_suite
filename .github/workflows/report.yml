@@ -2,8 +2,8 @@ name: Deploy Playwright report to GitHub Pages
 
 on:
   push:
-    branches: [ main ]   # o la rama que uses
-  workflow_dispatch:      # para lanzarlo manualmente
+    branches: [ main ]        # ajusta si usas otra rama
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -17,28 +17,48 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+    # Env disponibles para todos los steps (tus tests y el script Slack)
+    env:
+      API_BASE_URL: ${{ secrets.API_BASE_URL }}
+      API_TOKEN: ${{ secrets.API_TOKEN }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      # URL pública de Pages basada en owner/repo (sirve para tu mensaje Slack)
+      REPORT_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+      TZ: America/Bogota
+      NODE_ENV: production
+      PW_JSON: playwright-report/json-report.json
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
 
-      - run: npm ci
+      - name: Install deps
+        run: npm ci
 
-      # Instala navegadores Playwright (si tienes tests UI; para sólo API puedes omitir --with-deps)
-      - run: npx playwright install --with-deps
+      # Si SOLO haces pruebas de API, puedes comentar esta línea para acelerar.
+      - name: Install Playwright browsers (UI only)
+        run: npx playwright install --with-deps
 
-      # Ejecuta tests y genera HTML en ./playwright-report
-      - run: npx playwright test
+      - name: Run tests (always publish report)
+        run: |
+          npx playwright test || true
+          touch playwright-report/.nojekyll
 
-      # Evita que GitHub Pages/Jekyll oculte assets con guiones bajos
-      - run: touch playwright-report/.nojekyll
-
-      # Sube el artefacto que se publicará
-      - uses: actions/upload-pages-artifact@v3
+      - name: Upload artifact (Playwright HTML)
+        uses: actions/upload-pages-artifact@v3
         with:
           path: playwright-report
+
+      - name: Send Slack summary
+        if: always()
+        run: node send-slack-summary.js
 
   deploy:
     runs-on: ubuntu-latest
@@ -49,3 +69,4 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+

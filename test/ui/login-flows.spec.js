@@ -10,7 +10,8 @@ const selectors = {
   resetEmail: 'role=textbox[name="Email"]',
   resetButton: 'role=button[name="Reset password"]',
   returnToSignIn: 'role=link[name="Return to sign in"]',
-  errorMessage: 'div.alert.alert-error:has-text("Incorrect username or password.")',
+  errorMessage:
+    'div.alert.alert-error:has-text("Incorrect username or password.")',
   resetConfirmation: "text=Password reset confirmation sent!",
 };
 

@@ -1,0 +1,78 @@
+{
+  "$id": "https://example.com/schemas/cupones-by-subgroup.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Coupons by Subgroup Response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["status", "data"],
+  "properties": {
+    "status": { "type": "string", "enum": ["OK"] },
+    "data": {
+      "type": "array",
+      "minItems": 0,
+      "items": { "$ref": "#/$defs/Coupon" }
+    }
+  },
+  "$defs": {
+    "ObjectId": { "type": "string", "pattern": "^[a-fA-F0-9]{24}$" },
+    "Coupon": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "is_reusable",
+        "is_used",
+        "is_valid",
+        "payment_required",
+        "_id",
+        "date_created",
+        "group",
+        "subgroup",
+        "account",
+        "valid_from",
+        "valid_to",
+        "code",
+        "percent",
+        "type",
+        "type_code",
+        "detail",
+        "_code",
+        "_detail",
+        "__v",
+        "is_active",
+        "id"
+      ],
+      "properties": {
+        "is_reusable": { "type": "boolean" },
+        "is_used": { "type": "boolean" },
+        "is_valid": { "type": "boolean" },
+        "payment_required": { "type": "boolean" },
+        "_id": { "$ref": "#/$defs/ObjectId" },
+        "date_created": { "type": "string", "format": "date-time" },
+        "group": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["_id", "name", "gateway"],
+          "properties": {
+            "_id": { "$ref": "#/$defs/ObjectId" },
+            "name": { "type": "string", "minLength": 1 },
+            "gateway": { "type": "string" }
+          }
+        },
+        "subgroup": { "$ref": "#/$defs/ObjectId" },
+        "account": { "$ref": "#/$defs/ObjectId" },
+        "valid_from": { "type": "string", "format": "date-time" },
+        "valid_to": { "type": "string", "format": "date-time" },
+        "code": { "type": "string", "minLength": 1 },
+        "percent": { "type": "number", "minimum": 0, "maximum": 100 },
+        "type": { "type": "string", "minLength": 1 },
+        "type_code": { "type": "string", "minLength": 1 },
+        "detail": { "type": "string", "minLength": 1 },
+        "_code": { "type": "string", "minLength": 1 },
+        "_detail": { "type": "string", "minLength": 1 },
+        "__v": { "type": "integer", "minimum": 0 },
+        "is_active": { "type": "boolean" },
+        "id": { "$ref": "#/$defs/ObjectId" }
+      }
+    }
+  }
+}

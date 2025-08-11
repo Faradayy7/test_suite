@@ -2,7 +2,7 @@ name: Deploy Playwright report to GitHub Pages
 
 on:
   push:
-    branches: [ main ]        # ajusta si usas otra rama
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -17,48 +17,38 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    # Env disponibles para todos los steps (tus tests y el script Slack)
     env:
       API_BASE_URL: ${{ secrets.API_BASE_URL }}
       API_TOKEN: ${{ secrets.API_TOKEN }}
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      # URL pública de Pages basada en owner/repo (sirve para tu mensaje Slack)
       REPORT_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
       TZ: America/Bogota
       NODE_ENV: production
       PW_JSON: playwright-report/json-report.json
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
-
-      - name: Install deps
-        run: npm ci
-
-      # Si SOLO haces pruebas de API, puedes comentar esta línea para acelerar.
-      - name: Install Playwright browsers (UI only)
-        run: npx playwright install --with-deps
-
-      - name: Run tests (always publish report)
-        run: |
-          npx playwright test || true
-          touch playwright-report/.nojekyll
-
-      - name: Upload artifact (Playwright HTML)
-        uses: actions/upload-pages-artifact@v3
+      - run: npm ci
+      - run: npx playwright install --with-deps
+      - run: npx playwright test || true
+      - run: touch playwright-report/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: playwright-report
-
       - name: Send Slack summary
         if: always()
-        run: node send-slack-summary.js
+        run: node scripts/slack-report.js
+        env:
+          API_BASE_URL: ${{ secrets.API_BASE_URL }}
+          API_TOKEN: ${{ secrets.API_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          REPORT_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+          TZ: America/Bogota
+          NODE_ENV: production
+          PW_JSON: playwright-report/json-report.json
 
   deploy:
     runs-on: ubuntu-latest
@@ -69,4 +59,3 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
-

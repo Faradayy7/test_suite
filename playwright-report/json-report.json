@@ -1,0 +1,134 @@
+{
+  "config": {
+    "configFile": "D:\\CodeForge\\QA_Sector\\test_suite\\playwright.config.js",
+    "rootDir": "D:/CodeForge/QA_Sector/test_suite",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "playwright-report/json-report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "D:/CodeForge/QA_Sector/test_suite/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/CodeForge/QA_Sector/test_suite",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.54.2",
+    "workers": 6,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "test\\api\\cupones\\group-contract.spec.js",
+      "file": "test/api/cupones/group-contract.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "TC-CUPONES-001 - Contrato grupo",
+          "file": "test/api/cupones/group-contract.spec.js",
+          "line": 24,
+          "column": 6,
+          "specs": [
+            {
+              "title": "debe responder con status 200 y cumplir el contrato del schema",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 486,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Status code: 200\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-11T01:42:29.891Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "response-body.json",
+                          "contentType": "application/json",
+                          "body": "ewogICJzdGF0dXMiOiAiT0siLAogICJkYXRhIjogWwogICAgewogICAgICAiY291cG9uX3RvdGFsIjogMCwKICAgICAgImNvdXBvbl91c2VkX3RvdGFsIjogMCwKICAgICAgImNvdXBvbl92YWxpZF90b3RhbCI6IDAsCiAgICAgICJfaWQiOiAiNjg5OGJjNmE4ZDBkNmJjMDk3NWY2NThmIiwKICAgICAgIm5hbWUiOiAicHJ1ZWJhIDUiLAogICAgICAiYWNjb3VudCI6ICI2Mjg1MjllYjY5NjRmMDc3YmZmMGYwZGQiLAogICAgICAiZGF0ZV9jcmVhdGVkIjogIjIwMjUtMDgtMTBUMTU6MzY6MTAuMjczWiIsCiAgICAgICJnYXRld2F5IjogIiIsCiAgICAgICJfbmFtZSI6ICJwcnVlYmEgNSIsCiAgICAgICJfX3YiOiAwCiAgICB9LAogICAgewogICAgICAiY291cG9uX3RvdGFsIjogMCwKICAgICAgImNvdXBvbl91c2VkX3RvdGFsIjogMCwKICAgICAgImNvdXBvbl92YWxpZF90b3RhbCI6IDAsCiAgICAgICJfaWQiOiAiNjg5OGJjNTM4ZDBkNmJjMDk3NWY2NDBjIiwKICAgICAgIm5hbWUiOiAidGVzdDciLAogICAgICAiYWNjb3VudCI6ICI2Mjg1MjllYjY5NjRmMDc3YmZmMGYwZGQiLAogICAgICAiZGF0ZV9jcmVhdGVkIjogIjIwMjUtMDgtMTBUMTU6MzU6NDcuMjA1WiIsCiAgICAgICJfbmFtZSI6ICJ0ZXN0NyIsCiAgICAgICJfX3YiOiAwCiAgICB9LAogICAgewogICAgICAiY291cG9uX3RvdGFsIjogMCwKICAgICAgImNvdXBvbl91c2VkX3RvdGFsIjogMCwKICAgICAgImNvdXBvbl92YWxpZF90b3RhbCI6IDAsCiAgICAgICJfaWQiOiAiNjg5OGJiMWQ4ZDBkNmJjMDk3NWY1ZGFhIiwKICAgICAgIm5hbWUiOiAidGVzdCA1IiwKICAgICAgImFjY291bnQiOiAiNjI4NTI5ZWI2OTY0ZjA3N2JmZjBmMGRkIiwKICAgICAgImRhdGVfY3JlYXRlZCI6ICIyMDI1LTA4LTEwVDE1OjMwOjM3LjA5OVoiLAogICAgICAiZ2F0ZXdheSI6ICJzdHJpcGUiLAogICAgICAiX25hbWUiOiAidGVzdCA1IiwKICAgICAgIl9fdiI6IDAKICAgIH0sCiAgICB7CiAgICAgICJjb3Vwb25fdG90YWwiOiAxMjksCiAgICAgICJjb3Vwb25fdXNlZF90b3RhbCI6IDAsCiAgICAgICJjb3Vwb25fdmFsaWRfdG90YWwiOiAxMjksCiAgICAgICJfaWQiOiAiNjg5MTQxZDI4ZTQ3MjVkYzc2MWI2ZjZkIiwKICAgICAgIm5hbWUiOiAidGVzdGZmZmYiLAogICAgICAiYWNjb3VudCI6ICI2Mjg1MjllYjY5NjRmMDc3YmZmMGYwZGQiLAogICAgICAiZGF0ZV9jcmVhdGVkIjogIjIwMjUtMDgtMDRUMjM6Mjc6MTQuNDUyWiIsCiAgICAgICJnYXRld2F5IjogIiIsCiAgICAgICJfbmFtZSI6ICJ0ZXN0ZmZmZiIsCiAgICAgICJfX3YiOiAwCiAgICB9LAogICAgewogICAgICAiY291cG9uX3RvdGFsIjogMTcyLAogICAgICAiY291cG9uX3VzZWRfdG90YWwiOiAwLAogICAgICAiY291cG9uX3ZhbGlkX3RvdGFsIjogMTcxLAogICAgICAiX2lkIjogIjY4ODE2ZTExMjAwYjJhNGZjNjlhOWViOCIsCiAgICAgICJuYW1lIjogImdydXBvMnRlc3RkdXBsaWNhZG8iLAogICAgICAiYWNjb3VudCI6ICI2Mjg1MjllYjY5NjRmMDc3YmZmMGYwZGQiLAogICAgICAiZGF0ZV9jcmVhdGVkIjogIjIwMjUtMDctMjNUMjM6MTk6NDUuNjIyWiIsCiAgICAgICJnYXRld2F5IjogInN0cmlwZSIsCiAgICAgICJfbmFtZSI6ICJncnVwbzJ0ZXN0ZHVwbGljYWRvIiwKICAgICAgIl9fdiI6IDAKICAgIH0sCiAgICB7CiAgICAgICJjb3Vwb25fdG90YWwiOiAxLAogICAgICAiY291cG9uX3VzZWRfdG90YWwiOiAwLAogICAgICAiY291cG9uX3ZhbGlkX3RvdGFsIjogMCwKICAgICAgIl9pZCI6ICI2ODgwZmFhOTE1ZjdkNmI4YWMwYjExMWEiLAogICAgICAibmFtZSI6ICJjdXBvbiBvcmlnaW5hbCAiLAogICAgICAiYWNjb3VudCI6ICI2Mjg1MjllYjY5NjRmMDc3YmZmMGYwZGQiLAogICAgICAiZGF0ZV9jcmVhdGVkIjogIjIwMjUtMDctMjNUMTU6MDc6MjEuOTcyWiIsCiAgICAgICJnYXRld2F5IjogInN0cmlwZSIsCiAgICAgICJfbmFtZSI6ICJjdXBvbiBvcmlnaW5hbCAiLAogICAgICAiX192IjogMAogICAgfSwKICAgIHsKICAgICAgImNvdXBvbl90b3RhbCI6IDAsCiAgICAgICJjb3Vwb25fdXNlZF90b3RhbCI6IDAsCiAgICAgICJjb3Vwb25fdmFsaWRfdG90YWwiOiAwLAogICAgICAiX2lkIjogIjY4Nzk2MjQ2NTQ3ZmZlZGY5ZDBiYzE0MyIsCiAgICAgICJuYW1lIjogInRlc3QyIiwKICAgICAgImFjY291bnQiOiAiNjI4NTI5ZWI2OTY0ZjA3N2JmZjBmMGRkIiwKICAgICAgImRhdGVfY3JlYXRlZCI6ICIyMDI1LTA3LTE3VDIwOjUxOjE4LjAzNloiLAogICAgICAiZ2F0ZXdheSI6ICIiLAogICAgICAiX25hbWUiOiAidGVzdDIiLAogICAgICAiX192IjogMAogICAgfSwKICAgIHsKICAgICAgImNvdXBvbl90b3RhbCI6IDYsCiAgICAgICJjb3Vwb25fdXNlZF90b3RhbCI6IDAsCiAgICAgICJjb3Vwb25fdmFsaWRfdG90YWwiOiA2LAogICAgICAiX2lkIjogIjY4Nzk2MjE0ZmIzYmMyZGZlMzE3ZmQ4NSIsCiAgICAgICJuYW1lIjogInRlc3RyZXVzbyIsCiAgICAgICJhY2NvdW50IjogIjYyODUyOWViNjk2NGYwNzdiZmYwZjBkZCIsCiAgICAgICJkYXRlX2NyZWF0ZWQiOiAiMjAyNS0wNy0xN1QyMDo1MDoyOC42MjdaIiwKICAgICAgImdhdGV3YXkiOiAiIiwKICAgICAgIl9uYW1lIjogInRlc3RyZXVzbyIsCiAgICAgICJfX3YiOiAwCiAgICB9LAogICAgewogICAgICAiY291cG9uX3RvdGFsIjogOSwKICAgICAgImNvdXBvbl91c2VkX3RvdGFsIjogMCwKICAgICAgImNvdXBvbl92YWxpZF90b3RhbCI6IDksCiAgICAgICJfaWQiOiAiNjg2ZGEyYTBkZjlkYzNhNzc1YzNjYThlIiwKICAgICAgIm5hbWUiOiAidGVzdHFhIiwKICAgICAgImFjY291bnQiOiAiNjI4NTI5ZWI2OTY0ZjA3N2JmZjBmMGRkIiwKICAgICAgImRhdGVfY3JlYXRlZCI6ICIyMDI1LTA3LTA4VDIyOjU4OjQwLjc4OVoiLAogICAgICAiZ2F0ZXdheSI6ICJxYSIsCiAgICAgICJfbmFtZSI6ICJ0ZXN0cWEiLAogICAgICAiX192IjogMAogICAgfSwKICAgIHsKICAgICAgImNvdXBvbl90b3RhbCI6IDIsCiAgICAgICJjb3Vwb25fdXNlZF90b3RhbCI6IDAsCiAgICAgICJjb3Vwb25fdmFsaWRfdG90YWwiOiAwLAogICAgICAiX2lkIjogIjY4NmQ5OWU0N2U4NDA5OTk0NmQxMzYyNiIsCiAgICAgICJuYW1lIjogInRlc3QiLAogICAgICAiYWNjb3VudCI6ICI2Mjg1MjllYjY5NjRmMDc3YmZmMGYwZGQiLAogICAgICAiZGF0ZV9jcmVhdGVkIjogIjIwMjUtMDctMDhUMjI6MjE6MjQuMzM4WiIsCiAgICAgICJnYXRld2F5IjogInN0cmlwZWRlbW8iLAogICAgICAiX25hbWUiOiAidGVzdCIsCiAgICAgICJfX3YiOiAwCiAgICB9LAogICAgewogICAgICAiY291cG9uX3RvdGFsIjogMjUsCiAgICAgICJjb3Vwb25fdXNlZF90b3RhbCI6IDAsCiAgICAgICJjb3Vwb25fdmFsaWRfdG90YWwiOiAwLAogICAgICAiX2lkIjogIjY1Y2E3ZTFjZDA3ZWJlMWNjNTU4Y2ExNiIsCiAgICAgICJuYW1lIjogInRyaWFsIGRheSIsCiAgICAgICJhY2NvdW50IjogIjYyODUyOWViNjk2NGYwNzdiZmYwZjBkZCIsCiAgICAgICJkYXRlX2NyZWF0ZWQiOiAiMjAyNC0wMi0xMlQyMDoyMjo1Mi4xMDlaIiwKICAgICAgIl9uYW1lIjogInRyaWFsIGRheSIsCiAgICAgICJfX3YiOiAwCiAgICB9LAogICAgewogICAgICAiY291cG9uX3RvdGFsIjogMiwKICAgICAgImNvdXBvbl91c2VkX3RvdGFsIjogMCwKICAgICAgImNvdXBvbl92YWxpZF90b3RhbCI6IDAsCiAgICAgICJfaWQiOiAiNjU5ZWQxNWJiODk0YzMwMmU0MzY2NmM2IiwKICAgICAgIm5hbWUiOiAiQ3Vwb25lcyBQYXlwYWwiLAogICAgICAiYWNjb3VudCI6ICI2Mjg1MjllYjY5NjRmMDc3YmZmMGYwZGQiLAogICAgICAiZGF0ZV9jcmVhdGVkIjogIjIwMjQtMDEtMTBUMTc6MTg6MTkuMDQxWiIsCiAgICAgICJnYXRld2F5IjogIlBheXBhbCIsCiAgICAgICJfbmFtZSI6ICJjdXBvbmVzIHBheXBhbCIsCiAgICAgICJfX3YiOiAwCiAgICB9LAogICAgewogICAgICAiY291cG9uX3RvdGFsIjogMzIsCiAgICAgICJjb3Vwb25fdXNlZF90b3RhbCI6IDAsCiAgICAgICJjb3Vwb25fdmFsaWRfdG90YWwiOiAwLAogICAgICAiX2lkIjogIjYzMGZjZGY4MmQxYmVmNjM3NTcxNjIyNSIsCiAgICAgICJuYW1lIjogInBsYW4gbWVuc3VhbCIsCiAgICAgICJhY2NvdW50IjogIjYyODUyOWViNjk2NGYwNzdiZmYwZjBkZCIsCiAgICAgICJkYXRlX2NyZWF0ZWQiOiAiMjAyMi0wOC0zMVQyMTowOToxMi43NDZaIiwKICAgICAgImdhdGV3YXkiOiAiIiwKICAgICAgIl9uYW1lIjogInBsYW4gbWVuc3VhbCIsCiAgICAgICJfX3YiOiAwCiAgICB9CiAgXQp9"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7f98dd57560830628206-00616dfa7bc20677458d",
+              "file": "test/api/cupones/group-contract.spec.js",
+              "line": 25,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-08-11T01:42:28.955Z",
+    "duration": 1447.116,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

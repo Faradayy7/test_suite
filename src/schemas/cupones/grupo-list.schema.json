@@ -1,0 +1,79 @@
+{
+  "$id": "https://example.com/schemas/coupons-list.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Coupons List Response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["status", "data"],
+  "properties": {
+    "status": { "type": "string", "enum": ["OK"] },
+    "data": {
+      "type": "array",
+      "minItems": 0,
+      "items": { "$ref": "#/$defs/CouponSummary" }
+    }
+  },
+  "$defs": {
+    "ObjectId": { "type": "string", "pattern": "^[a-fA-F0-9]{24}$" },
+    "CouponSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "coupon_total",
+        "coupon_used_total",
+        "coupon_valid_total",
+        "_id",
+        "name",
+        "account",
+        "date_created",
+        "_name",
+        "__v"
+      ],
+      "properties": {
+        "coupon_total": { "type": "integer", "minimum": 0 },
+        "coupon_used_total": { "type": "integer", "minimum": 0 },
+        "coupon_valid_total": { "type": "integer", "minimum": 0 },
+        "_id": { "$ref": "#/$defs/ObjectId" },
+        "name": { "type": "string", "minLength": 1 },
+        "account": { "$ref": "#/$defs/ObjectId" },
+        "date_created": { "type": "string", "format": "date-time" },
+        "gateway": { "type": "string" },
+        "_name": { "type": "string", "minLength": 1 },
+        "__v": { "type": "integer", "minimum": 0 }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "coupon_total": { "type": "integer" } },
+            "required": ["coupon_total"]
+          },
+          "then": {
+            "properties": {
+              "coupon_used_total": {
+                "type": "integer",
+                "maximum": { "$data": "1/coupon_total" }
+              },
+              "coupon_valid_total": {
+                "type": "integer",
+                "maximum": { "$data": "1/coupon_total" }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": { "coupon_total": { "const": 0 } },
+            "required": ["coupon_total"]
+          },
+          "then": {
+            "properties": {
+              "coupon_used_total": { "const": 0 },
+              "coupon_valid_total": { "const": 0 }
+            },
+            "required": ["coupon_used_total", "coupon_valid_total"]
+          }
+        }
+      ]
+    }
+  }
+}

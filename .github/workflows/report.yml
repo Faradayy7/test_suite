@@ -1,0 +1,51 @@
+name: Deploy Playwright report to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]   # o la rama que uses
+  workflow_dispatch:      # para lanzarlo manualmente
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      # Instala navegadores Playwright (si tienes tests UI; para sólo API puedes omitir --with-deps)
+      - run: npx playwright install --with-deps
+
+      # Ejecuta tests y genera HTML en ./playwright-report
+      - run: npx playwright test
+
+      # Evita que GitHub Pages/Jekyll oculte assets con guiones bajos
+      - run: touch playwright-report/.nojekyll
+
+      # Sube el artefacto que se publicará
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: playwright-report
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

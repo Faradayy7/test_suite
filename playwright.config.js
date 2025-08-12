@@ -22,7 +22,6 @@ module.exports = defineConfig({
     ["html", { outputFolder: "playwright-report", open: "never" }],
     ["json", { outputFile: "playwright-report/json-report.json" }],
   ],
-  retries: 1, // Reintenta tests fallidos una vez
   timeout: 60000, // Timeout global por test
   projects: [
     {

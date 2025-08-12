@@ -38,7 +38,7 @@
       {
         "outputDir": "D:/CodeForge/QA_Sector/test_suite/test-results",
         "repeatEach": 1,
-        "retries": 1,
+        "retries": 0,
         "metadata": {
           "actualWorkers": 3
         },
@@ -54,7 +54,7 @@
       {
         "outputDir": "D:/CodeForge/QA_Sector/test_suite/test-results",
         "repeatEach": 1,
-        "retries": 1,
+        "retries": 0,
         "metadata": {
           "actualWorkers": 3
         },
@@ -70,7 +70,7 @@
       {
         "outputDir": "D:/CodeForge/QA_Sector/test_suite/test-results",
         "repeatEach": 1,
-        "retries": 1,
+        "retries": 0,
         "metadata": {
           "actualWorkers": 3
         },
@@ -93,20 +93,20 @@
   },
   "suites": [
     {
-      "title": "test\\ui\\login-flows.spec.js",
-      "file": "test/ui/login-flows.spec.js",
+      "title": "test\\api\\media\\media-smoke.spec.js",
+      "file": "test/api/media/media-smoke.spec.js",
       "column": 0,
       "line": 0,
       "specs": [],
       "suites": [
         {
-          "title": "Login Page",
-          "file": "test/ui/login-flows.spec.js",
-          "line": 27,
+          "title": "Smoke test media",
+          "file": "test/api/media/media-smoke.spec.js",
+          "line": 6,
           "column": 6,
           "specs": [
             {
-              "title": "Error con credenciales inválidas",
+              "title": "Obetener lista medias",
               "ok": true,
               "tags": [],
               "tests": [
@@ -121,12 +121,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1763,
+                      "duration": 2025,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-08-11T23:02:53.528Z",
+                      "startTime": "2025-08-12T02:20:22.543Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -144,12 +144,12 @@
                       "workerIndex": 1,
                       "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 2837,
+                      "duration": 3078,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-08-11T23:02:53.533Z",
+                      "startTime": "2025-08-12T02:20:22.535Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -167,12 +167,12 @@
                       "workerIndex": 2,
                       "parallelIndex": 2,
                       "status": "passed",
-                      "duration": 2406,
+                      "duration": 2734,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-08-11T23:02:53.552Z",
+                      "startTime": "2025-08-12T02:20:22.535Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -180,9 +180,9 @@
                   "status": "expected"
                 }
               ],
-              "id": "f89a2ad331e1fad29183-d2cbd5040410f6efdf26",
-              "file": "test/ui/login-flows.spec.js",
-              "line": 37,
+              "id": "0f206cab919dbb233ee8-a25df1d8550c13ec6f8e",
+              "file": "test/api/media/media-smoke.spec.js",
+              "line": 8,
               "column": 3
             }
           ]
@@ -192,8 +192,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-08-11T23:02:52.318Z",
-    "duration": 5020.317,
+    "startTime": "2025-08-12T02:20:21.357Z",
+    "duration": 4279.942999999999,
     "expected": 3,
     "skipped": 0,
     "unexpected": 0,
